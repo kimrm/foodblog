@@ -1,17 +1,125 @@
 import HeaderElement from "./components/header.js";
-import carousel from "../css/Components/carousel.js";
+import carousel from "./components/carousel.js";
+import createCarousel from "./createCarousel.js";
+import blogIndex from "./components/blogIndex.js";
+import blogPost from "./components/blogPost.js";
+import aboutPage from "./components/aboutPage.js";
 
 function main() {
-  const header = document.querySelector("header");
-  if (header) {
-    header.append(HeaderElement());
-  }
-
   window.addEventListener("scroll", scrolled);
 
-  getThePosts();
+  router();
+}
 
-  insertCarousel();
+function router() {
+  const url = window.location.pathname;
+  switch (url) {
+    case "/" || "/index.html":
+      setHeader("home");
+      getThePosts();
+      break;
+    case "/blog/blog-post.html":
+      setHeader("blog");
+      blogPost();
+      break;
+    case "/blog/" || "/blog/index.html":
+      setHeader("blog");
+      blogIndex();
+      break;
+    case "/about/" || "/about/index.html":
+      setHeader("about");
+      aboutPage();
+      break;
+    case "/contact/" || "/contact/index.html":
+      setHeader("contact");
+      contact();
+      break;
+  }
+}
+
+function contact() {
+  const btn = document.querySelector("#contact_submit_button");
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const nameElement = document.querySelector("#contact_name");
+    const emailElement = document.querySelector("#contact_email");
+    const subjectElement = document.querySelector("#contact_subject");
+    const messageElement = document.querySelector("#contact_message");
+    const name = nameElement.value;
+    const email = emailElement.value;
+    const subject = subjectElement.value;
+    const message = messageElement.value;
+
+    let hasErrors = false;
+    if (message.length < 25) {
+      const message_error = document.querySelector("#message_error");
+      message_error.classList.add("show");
+      messageElement.focus();
+      hasErrors = true;
+    } else {
+      const message_error = document.querySelector("#message_error");
+      message_error.classList.remove("show");
+    }
+    if (subject.length < 15) {
+      const subject_error = document.querySelector("#subject_error");
+      subject_error.classList.add("show");
+      subjectElement.focus();
+      hasErrors = true;
+    } else {
+      const subject_error = document.querySelector("#subject_error");
+      subject_error.classList.remove("show");
+    }
+    if (validateEmail(email) === false) {
+      const email_error = document.querySelector("#email_error");
+      email_error.classList.add("show");
+      emailElement.focus();
+      hasErrors = true;
+    } else {
+      const email_error = document.querySelector("#email_error");
+      email_error.classList.remove("show");
+    }
+    if (name.length < 5) {
+      const name_error = document.querySelector("#name_error");
+      name_error.classList.add("show");
+      nameElement.focus();
+      hasErrors = true;
+    } else {
+      const name_error = document.querySelector("#name_error");
+      name_error.classList.remove("show");
+    }
+
+    if (hasErrors) {
+      return false;
+    }
+
+    const formElement = document.querySelector("#contact_form");
+    const formData = new FormData(formElement);
+
+    fetch(
+      "https://wp-foodblog.kimrune.dev/wp-json/contact-form-7/v1/contact-forms/53/feedback",
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  });
+}
+
+function validateEmail(email) {
+  const regEx = /\S+@\S+\.\S+/;
+  const patternMatches = regEx.test(email);
+  return patternMatches;
+}
+
+function setHeader(page) {
+  const header = document.querySelector("header");
+  if (header) {
+    header.append(HeaderElement(page));
+  }
 }
 
 async function fetchPosts() {
@@ -25,7 +133,6 @@ async function fetchPosts() {
 function insertCarousel() {
   fetchPosts().then((data) => {
     const carousel_div = document.querySelector("#carousel");
-    carousel_div.innerHTML = "";
     carousel_div.append(carousel(data));
   });
 }
@@ -48,6 +155,7 @@ function getThePosts() {
     .then((response) => response.json())
     .then((data) => {
       renderStickyPost(data);
+      createCarousel(data);
     });
 }
 

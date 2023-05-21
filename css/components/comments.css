@@ -1,0 +1,17 @@
+.comment {
+  padding-block: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.comment.marked {
+  background-color: aliceblue;
+}
+
+.comment__author {
+  font-weight: bold;
+  color: #353535;
+}
+
+.comment__content {
+  margin-block: 1rem;
+}

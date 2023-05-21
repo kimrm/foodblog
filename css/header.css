@@ -30,6 +30,28 @@ nav ul {
   gap: 3rem;
 }
 
+nav ul li .active {
+  padding: 0.5rem 1rem;
+  background-color: hotpink;
+  border-radius: 5px;
+}
+
+.active-animation {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .header__right {
   display: flex;
   align-items: center;

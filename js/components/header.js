@@ -1,6 +1,6 @@
 import { HtmlElement as html } from "../htmlElement.js";
 
-export default function Header() {
+export default function Header(activePage = "home") {
   const container = new html("div");
   container.setClasses("container");
   const headerWrapper = new html("div");
@@ -10,10 +10,12 @@ export default function Header() {
     const searchBoxDiv = createSearchBoxDiv();
     const nav = createNav(() => {
       const liItems = [];
-      liItems.push(createNavLink("Home", "/"));
-      liItems.push(createNavLink("All posts", "/posts"));
-      liItems.push(createNavLink("About", "/about"));
-      liItems.push(createNavLink("Contact", "/contact"));
+      liItems.push(createNavLink("Home", "/", activePage === "home"));
+      liItems.push(createNavLink("All posts", "/blog", activePage === "blog"));
+      liItems.push(createNavLink("About", "/about", activePage === "about"));
+      liItems.push(
+        createNavLink("Contact", "/contact", activePage === "contact")
+      );
       return liItems;
     });
     return [searchBoxDiv, nav];
@@ -70,9 +72,13 @@ function createNav(liItems) {
   return nav;
 }
 
-function createNavLink(text, href = "#") {
+function createNavLink(text, href = "#", isActive = false) {
   const liItem = new html("li");
   const link = new html("a");
+  if (isActive) {
+    link.setClasses("active-animation");
+    link.setClasses("active");
+  }
   link.setHref(href);
   link.setText(text);
   liItem.appendChild(link);

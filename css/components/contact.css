@@ -1,0 +1,30 @@
+.contact-main {
+  margin-block: 7rem;
+}
+
+.contact-main h1 {
+  margin-block: 2rem;
+}
+
+.contact-main h2 {
+  margin-block: 1rem;
+}
+
+.contact-error {
+  display: none;
+  color: red;
+}
+
+.contact-error.show {
+  display: block;
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

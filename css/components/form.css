@@ -1,0 +1,52 @@
+.form-container {
+  margin-block: 3rem;
+  max-width: 500px;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbcbcb;
+  border-radius: 5px;
+}
+
+.form-field input:focus {
+  outline: none;
+  box-shadow: 0 0 10px 1px #cbcbcb;
+}
+
+.form-field textarea {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbcbcb;
+  border-radius: 5px;
+}
+
+.form-field textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px 1px #cbcbcb;
+}
+
+.submit-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  appearance: none;
+  padding: 0.5rem 1rem;
+  background-color: #cecece;
+  color: #000;
+  border: 1px solid #cbcbcb;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <header></header>
+
+    <main>
+      <div class="contact-main">
+        <div class="container">
+          <h1>Contact us</h1>
+          <h2>
+            If you have something to say, or share with us, please contact us.
+          </h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id
+            similique incidunt porro explicabo, deleniti laborum iste
+            perferendis, ducimus unde nostrum suscipit delectus facere sequi
+            veritatis corporis aliquid officia amet rerum.
+          </p>
+          <form id="contact_form" method="post">
+            <div class="form-container">
+              <div class="form-field">
+                <label for="contact_name">Name</label>
+                <input
+                  type="text"
+                  name="your-name"
+                  id="contact_name"
+                  required
+                />
+                <span id="name_error" class="contact-error"
+                  >Please enter minimum 5 characters.</span
+                >
+              </div>
+              <div class="form-field">
+                <label for="contact_email">Email</label>
+                <input
+                  type="email"
+                  name="your-email"
+                  id="contact_email"
+                  required
+                />
+                <span id="email_error" class="contact-error"
+                  >Please enter a valid e-mail address.</span
+                >
+              </div>
+              <div class="form-field">
+                <label for="contact_subject">Subject</label>
+                <input
+                  type="text"
+                  name="your-subject"
+                  id="contact_subject"
+                  required
+                />
+                <span id="subject_error" class="contact-error"
+                  >Please enter minimum 15 characters.</span
+                >
+              </div>
+              <div class="form-field">
+                <label for="contact_message">Message</label>
+                <textarea
+                  name="your-message"
+                  id="contact_message"
+                  cols="30"
+                  rows="10"
+                  required
+                ></textarea>
+                <span id="message_error" class="contact-error"
+                  >Please enter minimum 25 characters.</span
+                >
+              </div>
+              <div>
+                <button id="contact_submit_button" class="submit-button">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="about-teaser">
+            <h3>Møllers Kitchen Food Blog</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              voluptatum, voluptate, quibusdam, quia voluptas quod quos
+              voluptatibus quae doloribus quidem voluptatem. Quisquam
+              voluptatum, voluptate, quibusdam, quia voluptas quod quos
+              voluptatibus quae doloribus quidem voluptatem.
+            </p>
+            <a class="cta-button" href="/about">About us</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
