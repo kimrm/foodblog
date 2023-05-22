@@ -29,3 +29,12 @@
   object-fit: cover;
   opacity: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .search-result-item {
+    flex-direction: column;
+  }
+  .search-result-item__img {
+    width: 100%;
+  }
+}
