@@ -9,6 +9,9 @@
 @import url("components/form.css");
 @import url("components/comments.css");
 @import url("components/modal.css");
+@import url("components/hamburger.css");
+@import url("components/search.css");
+@import url("components/dropdownmenu.css");
 
 :root {
   --body-background: #fafafa;

@@ -19,10 +19,6 @@ header {
   align-items: center;
 }
 
-nav {
-  display: none;
-}
-
 nav ul {
   display: flex;
   align-items: center;
@@ -53,9 +49,16 @@ nav ul li .active {
 }
 
 .header__right {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 2rem;
+}
+
+.header__right.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 100;
 }
 
 .logo {
@@ -100,11 +103,11 @@ nav ul li .active {
   height: 1rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   .header__search-box {
     display: flex;
   }
-  nav {
+  .header__right {
     display: flex;
   }
 }

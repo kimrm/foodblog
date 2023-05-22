@@ -1,14 +1,14 @@
 import listItem from "./blogListItem.js";
 
 export default function blogIndex(posts) {
+  const url = `https://wp-foodblog.kimrune.dev/wp-json/wp/v2/posts?_embed=wp:featuredmedia&per_page=100`;
+
   const ul = document.querySelector(".blog-list");
   const loader = document.createElement("li");
   const loadMoreBtn = document.querySelector("#load_more");
   loader.innerHTML = `<p>Cooking up some posts for you... Please wait.</p>`;
   ul.append(loader);
-  fetch(
-    "https://wp-foodblog.kimrune.dev/wp-json/wp/v2/posts?_embed=wp:featuredmedia&per_page=100"
-  )
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       ul.innerHTML = "";

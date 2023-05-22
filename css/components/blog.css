@@ -33,9 +33,21 @@
 
 .blog-list-item {
   opacity: 0;
-  padding: 1rem;
-  border: 1px solid #ccc;
+
   border-radius: 5px;
+}
+
+.blog-list-item__card-link {
+  padding: 1rem;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+
+.blog-list-item__card-link:hover {
+  background-color: aliceblue;
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
 }
 
 .blog-list-item__img {
@@ -57,6 +69,19 @@
 
 .blog-load-more {
   text-align: center;
+}
+
+.blog-load-more > button {
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.blog-load-more > button:hover {
+  background-color: aliceblue;
 }
 
 .filter-menu {

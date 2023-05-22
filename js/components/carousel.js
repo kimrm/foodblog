@@ -82,7 +82,7 @@ function createGrid(data, position, count = 3) {
     post_column.innerHTML = `
         <img
         class="posts-column__image"
-        src="${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}"
+        src="${post._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url}"
         alt=""
         />`;
     return post_column;

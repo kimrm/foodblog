@@ -4,11 +4,17 @@ import createCarousel from "./createCarousel.js";
 import blogIndex from "./components/blogIndex.js";
 import blogPost from "./components/blogPost.js";
 import aboutPage from "./components/aboutPage.js";
+import search from "./search.js";
+import dropdown from "./components/dropdown.js";
 
 function main() {
   window.addEventListener("scroll", scrolled);
 
   router();
+
+  const body = document.querySelector("body");
+  const dropdownElement = dropdown();
+  body.append(dropdownElement);
 }
 
 function router() {
@@ -34,6 +40,9 @@ function router() {
       setHeader("contact");
       contact();
       break;
+    case "/blog/search.html":
+      setHeader("search");
+      search();
   }
 }
 
