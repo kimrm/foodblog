@@ -31,6 +31,10 @@
     opacity: 0;
     transform: translateY(-100%);
   }
+  50% {
+    opacity: 0.5;
+    transform: translateY(20%);
+  }
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -50,7 +54,7 @@
 }
 
 .dropdown-menu.open {
-  animation: dropdown_menu 0.5s ease-in-out forwards;
+  animation: dropdown_menu 0.3s ease-in-out forwards;
   display: flex;
 }
 

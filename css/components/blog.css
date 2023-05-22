@@ -23,6 +23,10 @@
   margin-block: 7rem;
 }
 
+.blog-index h1 {
+  margin-block: 2rem;
+}
+
 .blog-list {
   margin-block: 2rem;
   list-style: none;
@@ -144,4 +148,30 @@
   aspect-ratio: 1/1;
   object-fit: cover;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .blog-index__main {
+    flex-direction: column;
+  }
+
+  .filter-menu {
+    max-width: 100%;
+    position: static;
+    margin-block: 1rem;
+    padding: 1rem;
+  }
+
+  .blog-list {
+    margin-block: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .blog-list-item__img {
+    height: 150px;
+  }
+
+  .blog-post img {
+    height: 300px;
+  }
 }
