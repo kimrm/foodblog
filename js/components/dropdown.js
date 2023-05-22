@@ -5,7 +5,7 @@ export default function dropdown() {
   dropdownHeaderDiv.classList.add("dropdown-header-div");
 
   const dropdownHeader = document.createElement("h2");
-  dropdownHeader.classList.add("dropdown-header");
+  dropdownHeader.classList.add("logo");
   dropdownHeader.textContent = "Møllers Kitchen";
 
   const menu_button = document.createElement("div");
@@ -29,7 +29,78 @@ export default function dropdown() {
   ul.append(...links);
   dropdown.append(dropdownHeaderDiv);
   dropdown.append(ul);
+  const searchForm = createSearchBoxForm();
+  dropdown.append(searchForm);
   return dropdown;
+}
+
+function createSearchBoxForm() {
+  const form = document.createElement("form");
+  form.setAttribute("action", "/blog/search.html");
+  form.setAttribute("method", "GET");
+  const searchKeywords = new URLSearchParams(window.location.search).get(
+    "search"
+  );
+  const searchBoxDiv = document.createElement("div");
+  searchBoxDiv.classList.add("dropdown-menu__searchbox");
+  const searchInput = document.createElement("input");
+  searchInput.setAttribute("type", "text");
+  searchInput.setAttribute("name", "search");
+  searchInput.setAttribute("placeholder", "Keywords");
+  searchInput.setAttribute("aria-label", "Search");
+  if (searchKeywords) {
+    searchInput.setAttribute("value", searchKeywords);
+  }
+  const searchButton = document.createElement("button");
+  searchButton.textContent = "Search";
+  searchButton.addEventListener("click", () => {
+    search(searchInput.value);
+  });
+  searchBoxDiv.append(searchInput);
+  const searchButtonImg = document.createElement("img");
+  searchButtonImg.setAttribute("src", "/images/search-button.svg");
+
+  searchButton.append(searchButtonImg);
+  searchBoxDiv.append(searchButton);
+  form.append(searchBoxDiv);
+  return form;
+}
+
+function _createSearchBoxDiv() {
+  const form = new html("form");
+  form.setAttributes({ action: "/blog/search.html", method: "GET" });
+  const searchKeywords = new URLSearchParams(window.location.search).get(
+    "search"
+  );
+  const searchBoxDiv = new html("div");
+  searchBoxDiv.setClasses("header__search-box");
+  const searchInput = new html("input");
+  searchInput.setAttributes({
+    type: "text",
+    name: "search",
+    placeholder: "Keywords",
+    "aria-label": "Search",
+  });
+  if (searchKeywords) {
+    searchInput.setAttributes({ value: searchKeywords });
+  }
+  const searchButton = new html("button");
+  searchButton.setClasses("header__search-button");
+  searchButton.setEventListener("click", () => {
+    search(searchInput.element.value);
+  });
+  searchBoxDiv.appendChild(searchInput);
+  const searchButtonImg = new html("img");
+  searchButtonImg
+    .setSrc("/images/search-button.svg")
+    .setClasses("header__search-button-img");
+  const searchButtonText = new html("span");
+  searchButtonText.setText("Search");
+  searchButton.appendChild(searchButtonImg);
+  searchButton.appendChild(searchButtonText);
+  searchBoxDiv.appendChild(searchButton);
+  form.appendChild(searchBoxDiv);
+  return form;
 }
 
 function createLink(text, href) {

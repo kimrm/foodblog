@@ -34,7 +34,7 @@
 
 html,
 body {
-  height: 100%;
+  height: max-content;
   font-family: var(--body-font-family);
   background-color: var(--body-background);
 }
@@ -154,16 +154,6 @@ h2 {
   }
   100% {
     transform: translateX(0);
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .posts-grid {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .posts-column__image {
-    max-height: 350px;
   }
 }
 
@@ -328,4 +318,21 @@ h2 {
   font-size: 1.5rem;
   margin-block: 1rem;
   font-family: var(--h3-font-family);
+}
+
+@media screen and (min-width: 768px) {
+  .posts-grid {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .posts-column__image {
+    max-height: 350px;
+  }
+}
+
+@media screen and (max-width: 768) {
+  #button_left,
+  #button_right {
+    display: none;
+  }
 }

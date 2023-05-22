@@ -1,6 +1,6 @@
 header {
-  position: fixed;
   top: 0;
+  position: sticky;
   width: 100%;
   z-index: 100;
   background-color: #fafafa;
@@ -9,14 +9,15 @@ header {
 }
 
 .scrolled {
-  transition: all 0.3s ease-in-out;
-  padding-block: 0.5rem;
+  padding-block: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 nav ul {

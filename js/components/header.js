@@ -2,6 +2,7 @@ import { HtmlElement as html } from "../htmlElement.js";
 import search from "../search.js";
 
 export default function Header(activePage = "home") {
+  const hamburger = createHamburgerButton();
   const container = new html("div");
   container.setClasses("container");
   const headerWrapper = new html("div");
@@ -10,7 +11,6 @@ export default function Header(activePage = "home") {
 
   const rightDiv = createRightDiv(activePage);
 
-  const hamburger = createHamburgerButton();
   rightDiv.appendChild(hamburger);
   container.appendChild(headerWrapper);
   headerWrapper.appendChildren(logoLink, hamburger, rightDiv);

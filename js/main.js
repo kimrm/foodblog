@@ -8,9 +8,9 @@ import search from "./search.js";
 import dropdown from "./components/dropdown.js";
 
 function main() {
-  window.addEventListener("scroll", scrolled);
-
   router();
+
+  window.addEventListener("scroll", scrolled);
 
   const body = document.querySelector("body");
   const dropdownElement = dropdown();
@@ -139,16 +139,9 @@ async function fetchPosts() {
   return data.filter((post) => post.sticky === false);
 }
 
-function insertCarousel() {
-  fetchPosts().then((data) => {
-    const carousel_div = document.querySelector("#carousel");
-    carousel_div.append(carousel(data));
-  });
-}
-
 function scrolled() {
   const header = document.querySelector("header");
-  if (header && window.scrollY > 100) {
+  if (header && window.scrollY > 1) {
     if (!header.classList.contains("scrolled")) {
       header.classList.add("scrolled");
     }
@@ -184,6 +177,8 @@ function renderStickyPost(data) {
   image1.src = image;
   const image2 = document.querySelector(".second-image");
   image2.src = image;
+  const cta_button = document.querySelector(".hero-cta-button");
+  cta_button.href = `/blog/blog-post.html?id=${post.id}`;
 }
 
 main();
