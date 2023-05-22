@@ -19,49 +19,83 @@
             <p>Find a dish for every occasion.</p>
             <div class="blog-index__main">
               <div class="filter-menu">
-                <div>Filter</div>
-                <ul>
-                  <li>
-                    <input
-                      type="checkbox"
-                      name="easy"
-                      id=""
-                      value="Easy"
-                      title="Easy"
-                    />
-                    <label for="easy">Easy</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      name="party"
-                      id=""
-                      value="party"
-                      title="party"
-                    />
-                    <label for="easy">Party</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      name="easy"
-                      id=""
-                      value="Easy"
-                      title="Easy"
-                    />
-                    <label for="easy">Spicy</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      name="easy"
-                      id=""
-                      value="Easy"
-                      title="Easy"
-                    />
-                    <label for="easy">Italian</label>
-                  </li>
-                </ul>
+                <div class="filter-menu__header">
+                  <div>Filter</div>
+                  <div class="filter-menu__close">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="filter-menu__open-icon"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="filter-menu__close-icon hide"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="filters">
+                  <ul>
+                    <li>
+                      <input
+                        type="checkbox"
+                        name="easy"
+                        id=""
+                        value="Easy"
+                        title="Easy"
+                      />
+                      <label for="easy">Easy</label>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        name="party"
+                        id=""
+                        value="party"
+                        title="party"
+                      />
+                      <label for="easy">Party</label>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        name="easy"
+                        id=""
+                        value="Easy"
+                        title="Easy"
+                      />
+                      <label for="easy">Spicy</label>
+                    </li>
+                    <li>
+                      <input
+                        type="checkbox"
+                        name="easy"
+                        id=""
+                        value="Easy"
+                        title="Easy"
+                      />
+                      <label for="easy">Italian</label>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div>
                 <ul class="blog-list"></ul>
