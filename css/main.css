@@ -115,6 +115,10 @@ h2 {
   padding-block: 4rem;
 }
 
+.latest-posts h3 {
+  margin-block-end: 1rem;
+}
+
 .posts-grid {
   display: flex;
   flex-direction: column;
@@ -202,6 +206,7 @@ h2 {
 }
 
 .carousel__button-container {
+  display: none;
   position: absolute;
   z-index: 200;
   background-color: transparent;
@@ -320,6 +325,18 @@ h2 {
   font-family: var(--h3-font-family);
 }
 
+.more-posts {
+  padding: 2rem;
+  text-align: center;
+  margin-block-start: 1rem;
+  text-decoration: underline;
+  display: block;
+}
+
+.more-posts:hover {
+  background-color: aliceblue;
+}
+
 @media screen and (min-width: 768px) {
   .posts-grid {
     flex-direction: row;
@@ -328,11 +345,10 @@ h2 {
   .posts-column__image {
     max-height: 350px;
   }
-}
-
-@media screen and (max-width: 768) {
-  #button_left,
-  #button_right {
+  .carousel__button-container {
+    display: block;
+  }
+  .more-posts {
     display: none;
   }
 }

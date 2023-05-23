@@ -43,10 +43,14 @@ function insertPosts(data, position, count = 3) {
   const columns = document.querySelectorAll(".posts-column");
   let i = 0;
   columns.forEach((column) => {
+    column.href = `/blog/blog-post.html?id=${displayPosts[i].id}`;
     column.classList.remove("in");
     const img = column.querySelector("img");
     img.classList.add("posts-column__image");
     img.src = `${displayPosts[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
+    const title = column.querySelector("h3");
+    title.classList.add("posts-column__title");
+    title.innerHTML = `${displayPosts[i].title.rendered}`;
     img.addEventListener("load", () => {
       column.classList.add("in");
       setTimeout(() => {
@@ -73,17 +77,23 @@ function createGrid(data, position, count = 3) {
   const displayPosts = data.slice(position, position + count);
 
   const columns = displayPosts.map((post) => {
-    const post_column = document.createElement("div");
-    post_column.classList.add("posts-column", "slidable");
+    const post_column_a = document.createElement("a");
+    post_column_a.href = `/blog/blog-post.html?id=${post.id}`;
+    post_column_a.classList.add("posts-column", "slidable");
+
     const img = document.createElement("img");
     img.classList.add("posts-column__image");
     img.src = `${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
     img.addEventListener("load", () => {
-      post_column.classList.add("in");
+      post_column_a.classList.add("in");
     });
-    post_column.append(img);
+    const title = document.createElement("h3");
+    title.classList.add("posts-column__title");
+    title.innerHTML = `${post.title.rendered}`;
 
-    return post_column;
+    post_column_a.append(img, title);
+
+    return post_column_a;
   });
 
   return columns;
