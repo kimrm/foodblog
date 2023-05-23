@@ -12,6 +12,7 @@
 @import url("components/hamburger.css");
 @import url("components/search.css");
 @import url("components/dropdownmenu.css");
+@import url("components/dialog.css");
 
 :root {
   --body-background: #fafafa;
@@ -166,22 +167,12 @@ h2 {
   flex-direction: column;
   gap: 1rem;
   cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #fff;
 }
 
-.posts-column:hover {
-  animation: carousel-hover 0.2s ease-in-out forwards;
-}
-
-@keyframes carousel-hover {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1.02);
-  }
+.posts-column__title {
+  padding: 1rem;
 }
 
 .posts-column__image {
@@ -194,9 +185,22 @@ h2 {
 }
 
 .posts-column__image:hover {
+  animation: carousel-hover 0.2s ease-in-out forwards;
   opacity: 1;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
   transition: all 0.2s ease-in-out;
+}
+
+@keyframes carousel-hover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.02);
+  }
 }
 
 .carousel {

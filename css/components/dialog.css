@@ -1,0 +1,15 @@
+dialog {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: #fff;
+  margin: auto;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog[open] {
+  display: block;
+}
