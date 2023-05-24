@@ -19,6 +19,13 @@
   padding: 2rem;
 }
 
+.filter-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block: 0.5rem;
+}
+
 .blog-index {
   margin-block: 1rem;
 }

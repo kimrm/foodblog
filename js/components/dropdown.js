@@ -52,15 +52,21 @@ function createSearchBoxForm() {
     searchInput.setAttribute("value", searchKeywords);
   }
   const searchButton = document.createElement("button");
-  searchButton.textContent = "Search";
+
+  searchButton.classList.add("header__search-button");
   searchButton.addEventListener("click", () => {
     search(searchInput.value);
   });
+
+  const searchButtonText = document.createElement("span");
+  searchButtonText.textContent = "Search";
+
   searchBoxDiv.append(searchInput);
   const searchButtonImg = document.createElement("img");
   searchButtonImg.setAttribute("src", "/images/search-button.svg");
 
-  searchButton.append(searchButtonImg);
+  searchButton.append(searchButtonImg, searchButtonText);
+
   searchBoxDiv.append(searchButton);
   form.append(searchBoxDiv);
   return form;

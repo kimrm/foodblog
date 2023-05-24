@@ -97,6 +97,12 @@ nav ul li .active {
   color: #000;
   border: 1px solid #cbcbcb;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.header__search-button:hover {
+  background-color: #b1b1b1;
+  transition: all 0.2s ease-in-out;
 }
 
 .header__search-button-img {

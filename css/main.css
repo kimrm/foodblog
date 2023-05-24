@@ -13,6 +13,7 @@
 @import url("components/search.css");
 @import url("components/dropdownmenu.css");
 @import url("components/dialog.css");
+@import url("components/errors.css");
 
 :root {
   --body-background: #fafafa;
@@ -282,6 +283,11 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 5%;
   font-weight: 700;
+}
+
+.cta-button:hover {
+  background-color: #4d68c8;
+  transition: all 0.2s ease-in-out;
 }
 
 .about-teaser {

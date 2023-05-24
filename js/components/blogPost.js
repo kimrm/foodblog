@@ -1,3 +1,4 @@
+import errorMessage from "./errorMessage.js";
 import comments from "./comments.js";
 
 export default function blogPost() {
@@ -45,6 +46,12 @@ export default function blogPost() {
       });
 
       document.title = data.title.rendered;
+    })
+    .catch((error) => {
+      errorMessage(
+        "Oh no, that's not supposed to happen!",
+        "Something went wrong. Please try again later."
+      );
     });
 
   comments(blogId);

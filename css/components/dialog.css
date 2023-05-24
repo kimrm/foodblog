@@ -4,6 +4,16 @@ dialog {
   padding: 2rem;
   background-color: #fff;
   margin: auto;
+  animation: in 0.2s ease-in-out forwards;
+}
+
+@keyframes in {
+  0% {
+    transform: translateY(-3000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 dialog::backdrop {
@@ -12,4 +22,16 @@ dialog::backdrop {
 
 dialog[open] {
   display: block;
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialog-ok-button {
+  display: block;
+  width: fit-content;
+  padding: 0 1rem;
 }

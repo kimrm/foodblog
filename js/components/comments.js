@@ -17,6 +17,13 @@ export default function comments(post_id) {
         const commentElement = createComment(element);
         commentsDiv.append(commentElement);
       });
+    })
+    .catch((error) => {
+      const commentsDiv = document.querySelector(".comments");
+      const commentElement = document.createElement("div");
+      commentElement.innerHTML = `<p>Could not fetch comments.. Please try again later.</p>`;
+      commentElement.classList.add("error-alert-text");
+      commentsDiv.append(commentElement);
     });
 }
 
@@ -66,5 +73,6 @@ function addComment(post_id) {
       const commentsDiv = document.querySelector(".comments");
       const commentElement = createComment(data, true);
       commentsDiv.append(commentElement);
-    });
+    })
+    .catch((error) => {});
 }

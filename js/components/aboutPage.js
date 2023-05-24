@@ -4,7 +4,7 @@ import errorMessage from "./errorMessage.js";
 
 export default function aboutPage() {
   fetch(
-    "https://wp-foodblog.kimrune.dev/wp-json/wp/v2/pagses/45?_embed=wp:featuredmedia"
+    "https://wp-foodblog.kimrune.dev/wp-json/wp/v2/pages/45?_embed=wp:featuredmedia"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -25,6 +25,9 @@ export default function aboutPage() {
       article.append(p);
     })
     .catch((error) => {
-      errorMessage("Error", "Something went wrong. Please try again later.");
+      errorMessage(
+        "Oh no, that's not supposed to happen!",
+        "Something went wrong. Please try again later."
+      );
     });
 }

@@ -6,6 +6,7 @@ import blogPost from "./components/blogPost.js";
 import aboutPage from "./components/aboutPage.js";
 import search from "./search.js";
 import dropdown from "./components/dropdown.js";
+import footer from "./components/footer.js";
 
 function main() {
   router();
@@ -15,12 +16,17 @@ function main() {
   const body = document.querySelector("body");
   const dropdownElement = dropdown();
   body.append(dropdownElement);
+
+  const footerElement = document.querySelector("footer");
+  footerElement.innerHTML = footer();
 }
 
 function router() {
   const url = window.location.pathname;
+
   switch (url) {
-    case "/" || "/index.html":
+    case "/":
+    case "/index.html":
       setHeader("home");
       getThePosts();
       break;
@@ -28,15 +34,18 @@ function router() {
       setHeader("blog");
       blogPost();
       break;
-    case "/blog/" || "/blog/index.html":
+    case "/blog/":
+    case "/blog/index.html":
       setHeader("blog");
       blogIndex();
       break;
-    case "/about/" || "/about/index.html":
+    case "/about/":
+    case "/about/index.html":
       setHeader("about");
       aboutPage();
       break;
-    case "/contact/" || "/contact/index.html":
+    case "/contact/":
+    case "/contact/index.html":
       setHeader("contact");
       contact();
       break;
@@ -167,16 +176,20 @@ function renderStickyPost(data) {
   title.innerHTML = post.title.rendered;
   const body = document.querySelector(".diagonal-hero__text");
   body.innerHTML = post.excerpt.rendered;
-  const image_front = document.querySelector(".main-image");
-  const image_back = document.querySelector(".second-image");
-  image_front.src = post.featured_image_src;
-  image_back.src = post.featured_image_src;
+
   const image =
     post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
   const image1 = document.querySelector(".main-image");
   image1.src = image;
   const image2 = document.querySelector(".second-image");
   image2.src = image;
+  image1.addEventListener("load", () => {
+    image1.classList.add("main-image-visible");
+  });
+  image2.addEventListener("load", () => {
+    image2.classList.add("second-image-visible");
+  });
+
   const cta_button = document.querySelector(".hero-cta-button");
   cta_button.href = `/blog/blog-post.html?id=${post.id}`;
 }

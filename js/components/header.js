@@ -27,8 +27,6 @@ function createHamburgerButton() {
   div.setEventListener("click", () => {
     const nav = document.querySelector(".dropdown-menu");
     nav.classList.toggle("open");
-    const hamburger = document.querySelector("#hamburger_button");
-    hamburger.classList.toggle("active");
   });
   return div;
 }
