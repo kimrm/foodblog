@@ -1,5 +1,4 @@
 import HeaderElement from "./components/header.js";
-import carousel from "./components/carousel.js";
 import createCarousel from "./createCarousel.js";
 import blogIndex from "./components/blogIndex.js";
 import blogPost from "./components/blogPost.js";
@@ -141,14 +140,6 @@ function setHeader(page) {
   if (header) {
     header.append(HeaderElement(page));
   }
-}
-
-async function fetchPosts() {
-  const url =
-    "https://wp-foodblog.kimrune.dev/wp-json/wp/v2/posts?_embed=wp:featuredmedia&per_page=100";
-  const posts = await fetch(url);
-  const data = await posts.json();
-  return data.filter((post) => post.sticky === false);
 }
 
 function scrolled() {

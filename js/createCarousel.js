@@ -1,5 +1,8 @@
+const images = [];
+
 export default function createCarousel(posts) {
-  const container = document.querySelector(".carousel");
+  preloadImages(posts);
+
   const posts_grid = document.querySelector(".posts-grid");
   const button_left = document.querySelector("#button_left");
   const button_right = document.querySelector("#button_right");
@@ -8,9 +11,10 @@ export default function createCarousel(posts) {
   const count = 3;
   const columns = createGrid(posts, position, count);
   posts_grid.append(...columns);
+  insertPosts(posts, position, count);
   setTimeout(() => {
     clearAnimations();
-  }, 1000);
+  }, 200);
 
   button_right.addEventListener("click", () => {
     position += count;
@@ -29,6 +33,14 @@ export default function createCarousel(posts) {
   });
 }
 
+function preloadImages(posts) {
+  posts.forEach((post) => {
+    const img = new Image();
+    img.src = `${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
+    images.push(img);
+  });
+}
+
 function clearAnimations() {
   const columns = document.querySelectorAll(".posts-column");
   columns.forEach((column) => {
@@ -40,26 +52,48 @@ function clearAnimations() {
 
 function insertPosts(data, position, count = 3) {
   const displayPosts = data.slice(position, position + count);
+  const preloadedImages = images.slice(position, position + count);
   const columns = document.querySelectorAll(".posts-column");
   let i = 0;
-  columns.forEach((column) => {
-    column.href = `/blog/blog-post.html?id=${displayPosts[i].id}`;
-    column.classList.remove("in");
-    const img = column.querySelector("img");
-    img.classList.add("posts-column__image");
-    img.src = `${displayPosts[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
-    const title = column.querySelector("h3");
-    title.classList.add("posts-column__title");
-    title.innerHTML = `${displayPosts[i].title.rendered}`;
-    img.addEventListener("load", () => {
+
+  displayPosts.forEach((post) => {
+    const column = columns[i];
+    if (column) {
+      column.href = `/blog/blog-post.html?id=${displayPosts[i].id}`;
+      column.classList.remove("in");
+      const img_container = column.querySelector(
+        ".posts-column__image-container"
+      );
+      img_container.innerHTML = "";
+      const image = preloadedImages[i];
+      img_container.append(image);
+
+      const title = column.querySelector("h3");
+      title.classList.add("posts-column__title");
+      title.innerHTML = `${displayPosts[i].title.rendered}`;
       column.classList.add("in");
       setTimeout(() => {
         column.classList.remove("out");
         column.classList.remove("in");
-      }, 1000);
-    });
-    i++;
+      }, 500);
+      i++;
+    }
   });
+
+  if (position >= data.length - count) {
+    if (!button_right.classList.contains("hide")) {
+      button_right.classList.add("hide");
+    }
+  } else {
+    button_right.classList.remove("hide");
+  }
+  if (position === 0) {
+    if (!button_left.classList.contains("hide")) {
+      button_left.classList.add("hide");
+    }
+  } else {
+    button_left.classList.remove("hide");
+  }
 }
 
 function setSlideOut() {
@@ -78,20 +112,17 @@ function createGrid(data, position, count = 3) {
 
   const columns = displayPosts.map((post) => {
     const post_column_a = document.createElement("a");
-    post_column_a.href = `/blog/blog-post.html?id=${post.id}`;
+    // post_column_a.href = `/blog/blog-post.html?id=${post.id}`;
     post_column_a.classList.add("posts-column", "slidable");
 
-    const img = document.createElement("img");
-    img.classList.add("posts-column__image");
-    img.src = `${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
-    img.addEventListener("load", () => {
-      post_column_a.classList.add("in");
-    });
+    const img_container = document.createElement("div");
+    img_container.classList.add("posts-column__image-container");
+
     const title = document.createElement("h3");
     title.classList.add("posts-column__title");
-    title.innerHTML = `${post.title.rendered}`;
+    // title.innerHTML = `${post.title.rendered}`;
 
-    post_column_a.append(img, title);
+    post_column_a.append(img_container, title);
 
     return post_column_a;
   });
