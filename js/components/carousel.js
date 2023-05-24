@@ -4,6 +4,17 @@ export default function carousel(posts) {
 
 function slide(posts, container, position) {
   const columns = createGrid(posts, position);
+  if (position === 0) {
+    const spanCarouselButtonLeft = document.querySelector(
+      "#carousel_button_left"
+    );
+    spanCarouselButtonLeft.classList.add("hide");
+  } else {
+    const spanCarouselButtonLeft = document.querySelector(
+      "#carousel_button_left"
+    );
+    spanCarouselButtonLeft.classList.remove("hide");
+  }
   container.classList.remove("out");
   container.append(...columns);
 }
@@ -27,8 +38,10 @@ function createCarousel(posts) {
 
   const spanCarouselButtonLeft = document.createElement("span");
   spanCarouselButtonLeft.classList.add("carousel__button-container", "left");
+  spanCarouselButtonLeft.id = "carousel_button_left";
   const spanCarouselButtonRight = document.createElement("span");
   spanCarouselButtonRight.classList.add("carousel__button-container", "right");
+  spanCarouselButtonRight.id = "carousel_button_right";
   const buttonLeft = document.createElement("button");
   buttonLeft.classList.add("carousel__button");
   buttonLeft.textContent = "back";

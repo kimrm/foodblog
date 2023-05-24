@@ -7,8 +7,11 @@ import aboutPage from "./components/aboutPage.js";
 import search from "./search.js";
 import dropdown from "./components/dropdown.js";
 import footer from "./components/footer.js";
+import hotjar from "./components/hotjar.js";
 
 function main() {
+  hotjar();
+
   router();
 
   window.addEventListener("scroll", scrolled);
