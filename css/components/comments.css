@@ -1,3 +1,7 @@
+.post-comments {
+  margin-block: 5rem;
+}
+
 .comment {
   padding-block: 1rem;
   border-bottom: 1px solid #e5e5e5;
@@ -5,6 +9,8 @@
 
 .comment.marked {
   background-color: aliceblue;
+  padding: 1rem;
+  transform: scale(1.03);
 }
 
 .comment__author {
