@@ -11,7 +11,7 @@ import errorMessage from "./components/errorMessage.js";
 import confirmMessage from "./components/confirmMessage.js";
 
 function main() {
-  //hotjar();
+  hotjar();
 
   router();
 

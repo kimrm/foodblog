@@ -6,7 +6,7 @@ export default function blogPost() {
 
   const url = `https://wp-foodblog.kimrune.dev/wp-json/wp/v2/posts/${blogId}?_embed=wp:featuredmedia`;
 
-  const data = fetch(url)
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       const article = document.querySelector(".blog-post");
