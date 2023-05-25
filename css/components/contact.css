@@ -15,6 +15,16 @@
   color: red;
 }
 
+.contact-confirmation {
+  display: none;
+  color: green;
+}
+
+.contact-confirmation.show {
+  display: block;
+  animation: fadein 0.5s;
+}
+
 .contact-error.show {
   display: block;
   animation: fadein 0.5s;

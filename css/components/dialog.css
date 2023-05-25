@@ -33,5 +33,14 @@ dialog[open] {
 .dialog-ok-button {
   display: block;
   width: fit-content;
-  padding: 0 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #cb44c2;
+  cursor: pointer;
+}
+
+.dialog-ok-button:hover {
+  background-color: #cb44c2;
+  color: #fff;
 }

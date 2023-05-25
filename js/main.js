@@ -7,6 +7,8 @@ import search from "./search.js";
 import dropdown from "./components/dropdown.js";
 import footer from "./components/footer.js";
 import hotjar from "./components/hotjar.js";
+import errorMessage from "./components/errorMessage.js";
+import confirmMessage from "./components/confirmMessage.js";
 
 function main() {
   hotjar();
@@ -124,9 +126,28 @@ function contact() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        if (data.status === "mail_sent") {
+          clearForm();
+          confirmMessage("Email sent", data.message);
+        } else {
+          errorMessage("Could not send email", data.message);
+        }
+      })
+      .catch((error) => {
+        errorMessage("Could not send email", error);
       });
   });
+}
+
+function clearForm() {
+  const nameElement = document.querySelector("#contact_name");
+  const emailElement = document.querySelector("#contact_email");
+  const subjectElement = document.querySelector("#contact_subject");
+  const messageElement = document.querySelector("#contact_message");
+  nameElement.value = "";
+  emailElement.value = "";
+  subjectElement.value = "";
+  messageElement.value = "";
 }
 
 function validateEmail(email) {
