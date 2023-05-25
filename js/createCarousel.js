@@ -37,6 +37,7 @@ function preloadImages(posts) {
   posts.forEach((post) => {
     const img = new Image();
     img.src = `${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
+    img.alt = `${post._embedded["wp:featuredmedia"][0].alt_text}`;
     images.push(img);
   });
 }

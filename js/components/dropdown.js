@@ -64,6 +64,8 @@ function createSearchBoxForm() {
   searchBoxDiv.append(searchInput);
   const searchButtonImg = document.createElement("img");
   searchButtonImg.setAttribute("src", "/images/search-button.svg");
+  searchButtonImg.setAttribute("alt", "search icon");
+  searchButtonImg.setAttribute("aria-hidden", "true");
 
   searchButton.append(searchButtonImg, searchButtonText);
 

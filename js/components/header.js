@@ -75,7 +75,8 @@ function createSearchBoxDiv() {
   const searchButtonImg = new html("img");
   searchButtonImg
     .setSrc("/images/search-button.svg")
-    .setClasses("header__search-button-img");
+    .setClasses("header__search-button-img")
+    .setAttributes({ "aria-hidden": "true", alt: "Search icon" });
   const searchButtonText = new html("span");
   searchButtonText.setText("Search");
   searchButton.appendChild(searchButtonImg);
