@@ -102,6 +102,7 @@ function createNav(activePage = "home") {
 function createNavLink(text, href = "#", isActive = false) {
   const liItem = new html("li");
   const link = new html("a");
+  link.setClasses("nav-link");
   if (isActive) {
     link.setClasses("active-animation");
     link.setClasses("active");

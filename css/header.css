@@ -34,6 +34,14 @@ nav ul li .active {
   border-radius: 5px;
 }
 
+.nav-link {
+  color: #171717;
+}
+
+.nav-link:not(.active):hover {
+  color: #650c3e;
+}
+
 .active-animation {
   animation: pulse 1s ease-in-out infinite;
 }
