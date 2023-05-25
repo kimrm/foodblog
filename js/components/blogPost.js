@@ -11,7 +11,10 @@ export default function blogPost() {
     .then((data) => {
       const article = document.querySelector(".blog-post");
       const img = document.createElement("img");
-      img.src = data._embedded["wp:featuredmedia"][0].source_url;
+      img.src =
+        data._embedded[
+          "wp:featuredmedia"
+        ][0].media_details.sizes.large.source_url;
       img.alt = data._embedded["wp:featuredmedia"][0].alt_text;
       img.classList.add("blog-post__img");
       img.addEventListener("load", () => {
