@@ -47,8 +47,6 @@ function showPostIndex(filter = null) {
       const counter = 8;
       let position = 0;
 
-      console.log(data.length, counter);
-
       if (data.length < counter) {
         loadMoreBtn.classList.add("hide");
       } else {

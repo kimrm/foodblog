@@ -9,16 +9,6 @@
   height: 100%;
 }
 
-.filter-menu {
-  top: 150px;
-  width: 100%;
-  max-width: 300px;
-  border: 1px dashed #ccc;
-  border-radius: 5px;
-  position: sticky;
-  padding: 2rem;
-}
-
 .filter-menu__item {
   display: flex;
   align-items: center;
@@ -182,16 +172,27 @@
   cursor: pointer;
 }
 
+.filter-menu {
+  width: 100%;
+  max-width: 100%;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  top: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .filter-menu {
+    max-width: 300px;
+    position: sticky;
+    padding: 2rem;
+    margin-block: 2rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .blog-index__main {
     flex-direction: column;
-  }
-
-  .filter-menu {
-    max-width: 100%;
-    position: static;
-    margin-block: 1rem;
-    padding: 1rem;
   }
 
   .blog-list {
