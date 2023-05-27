@@ -1,35 +1,35 @@
-import errorMessage from "./errorMessage.js";
+import showDialog from "../functions/showDialog.js";
 
 export default function comments(post_id) {
-  //https://wp-foodblog.kimrune.dev/wp-json/wp/v2/comments
-
   const commentButton = document.querySelector("#comment_submit_button");
   commentButton.addEventListener("click", (e) => {
     e.preventDefault();
-    addComment(post_id);
+    postComment(post_id);
   });
+
+  const commentsDiv = document.createElement("div");
+  commentsDiv.classList.add("comments");
 
   fetch(
     `https://wp-foodblog.kimrune.dev/wp-json/wp/v2/comments?post=${post_id}`
   )
     .then((response) => response.json())
     .then((data) => {
-      const commentsDiv = document.querySelector(".comments");
       data.forEach((element) => {
-        const commentElement = createComment(element);
+        const commentElement = commentItem(element);
         commentsDiv.append(commentElement);
       });
     })
     .catch((error) => {
-      const commentsDiv = document.querySelector(".comments");
       const commentElement = document.createElement("div");
       commentElement.innerHTML = `<p>Could not fetch comments.. Please try again later.</p>`;
       commentElement.classList.add("error-alert-text");
       commentsDiv.append(commentElement);
     });
+  return commentsDiv;
 }
 
-function createComment(item, marked = false) {
+function commentItem(item, marked = false) {
   const comment = document.createElement("div");
   comment.classList.add("comment");
   if (marked) {
@@ -66,7 +66,7 @@ function clearForm() {
   document.querySelector("#content").value = "";
 }
 
-function addComment(post_id) {
+function postComment(post_id) {
   const psw = "SVFm 61b0 tlPg 5xbW PYrh mkFh";
   const user = "krmadmin";
   const encoded = btoa(user + ":" + psw);
@@ -89,11 +89,12 @@ function addComment(post_id) {
     .then((response) => response.json())
     .then((data) => {
       const commentsDiv = document.querySelector(".comments");
-      const commentElement = createComment(data, true);
+      const commentElement = commentItem(data, true);
       commentsDiv.append(commentElement);
       clearForm();
+      showDialog("Comment added", "Thank you for your comment!");
     })
     .catch((error) => {
-      errorMessage("Could not add comment", "Please try again later.");
+      showDialog("Could not add comment", "Please try again later." + error);
     });
 }

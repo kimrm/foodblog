@@ -1,5 +1,5 @@
-export default function errorMessage(title, message) {
-  const errorDialog = document.createElement("dialog");
+export default function showDialog(title, message, type = "success") {
+  const dialogElement = document.createElement("dialog");
   const dialogBody = document.createElement("div");
   dialogBody.classList.add("dialog-body");
   const h2Title = document.createElement("h2");
@@ -10,12 +10,12 @@ export default function errorMessage(title, message) {
   button.classList.add("dialog-ok-button");
   button.innerHTML = "Okay";
   button.addEventListener("click", () => {
-    errorDialog.close();
+    dialogElement.close();
   });
   dialogBody.append(h2Title, pMessage, button);
-  errorDialog.append(dialogBody);
+  dialogElement.append(dialogBody);
   const body = document.querySelector("body");
-  body.appendChild(errorDialog);
+  body.appendChild(dialogElement);
 
-  errorDialog.showModal();
+  dialogElement.showModal();
 }

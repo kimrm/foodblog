@@ -24,16 +24,15 @@
 }
 
 .blog-list {
+  display: grid;
   margin-block: 2rem;
   list-style: none;
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .blog-list-item {
   opacity: 0;
-
   border-radius: 5px;
 }
 
@@ -129,6 +128,7 @@
   height: 500px;
   object-fit: cover;
   margin-block: 2rem 0;
+  opacity: 0;
 }
 
 .blog-post h1 {

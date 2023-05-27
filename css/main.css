@@ -192,9 +192,7 @@ h2 {
 }
 
 .posts-column__image-container:hover {
-  animation: carousel-hover 0.2s ease-in-out forwards;
   opacity: 1;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
   transition: all 0.2s ease-in-out;
 }
 
@@ -246,6 +244,12 @@ h2 {
   inset: 0;
   margin: auto;
   z-index: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.carousel__button:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
 }
 
 .carousel__button span {

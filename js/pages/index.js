@@ -1,6 +1,54 @@
-const images = [];
+const carouselImages = [];
 
-export default function createCarousel(posts) {
+export default function index() {
+  window.addEventListener("scroll", scrolled);
+
+  const url =
+    "https://wp-foodblog.kimrune.dev/wp-json/wp/v2/posts?_embed=wp:featuredmedia&per_page=100";
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      renderStickyPost(data);
+      renderCarousel(data);
+    });
+}
+
+function scrolled() {
+  const header = document.querySelector("header");
+  if (header && window.scrollY > 1) {
+    if (!header.classList.contains("scrolled")) {
+      header.classList.add("scrolled");
+    }
+  } else {
+    header.classList.remove("scrolled");
+  }
+}
+
+function renderStickyPost(data) {
+  const post = data.filter((post) => post.sticky === true)[0];
+  const title = document.querySelector(".diagonal-hero__title");
+  title.innerHTML = post.title.rendered;
+  const body = document.querySelector(".diagonal-hero__text");
+  body.innerHTML = post.excerpt.rendered;
+
+  const image =
+    post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;
+  const image1 = document.querySelector(".main-image");
+  image1.src = image;
+  const image2 = document.querySelector(".second-image");
+  image2.src = image;
+  image1.addEventListener("load", () => {
+    image1.classList.add("main-image-visible");
+  });
+  image2.addEventListener("load", () => {
+    image2.classList.add("second-image-visible");
+  });
+
+  const cta_button = document.querySelector(".hero-cta-button");
+  cta_button.href = `/blog/blog-post.html?id=${post.id}`;
+}
+
+function renderCarousel(posts) {
   preloadImages(posts);
 
   const posts_grid = document.querySelector(".posts-grid");
@@ -18,7 +66,7 @@ export default function createCarousel(posts) {
 
   button_right.addEventListener("click", () => {
     position += count;
-    setSlideOut();
+    setSlideOutAnimation();
     setTimeout(() => {
       insertPosts(posts, position, count);
     }, 500);
@@ -26,7 +74,7 @@ export default function createCarousel(posts) {
 
   button_left.addEventListener("click", () => {
     position -= count;
-    setSlideOut();
+    setSlideOutAnimation();
     setTimeout(() => {
       insertPosts(posts, position, count);
     }, 500);
@@ -38,7 +86,7 @@ function preloadImages(posts) {
     const img = new Image();
     img.src = `${post._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url}`;
     img.alt = `${post._embedded["wp:featuredmedia"][0].alt_text}`;
-    images.push(img);
+    carouselImages.push(img);
   });
 }
 
@@ -53,7 +101,7 @@ function clearAnimations() {
 
 function insertPosts(data, position, count = 3) {
   const displayPosts = data.slice(position, position + count);
-  const preloadedImages = images.slice(position, position + count);
+  const preloadedImages = carouselImages.slice(position, position + count);
   const columns = document.querySelectorAll(".posts-column");
   let i = 0;
 
@@ -97,7 +145,7 @@ function insertPosts(data, position, count = 3) {
   }
 }
 
-function setSlideOut() {
+function setSlideOutAnimation() {
   const columns = document.querySelectorAll(".posts-column");
   columns.forEach((column) => {
     setTimeout(() => {

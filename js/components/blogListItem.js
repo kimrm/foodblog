@@ -1,4 +1,4 @@
-import visibleDetector from "../observer.js";
+import visibleDetector from "../functions/observer.js";
 
 export default function blogListItem(post) {
   const excerpt = post.excerpt.rendered.substring(0, 200) + "...";
