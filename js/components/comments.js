@@ -1,4 +1,5 @@
 import showDialog from "../functions/showDialog.js";
+import { validateEmail } from "../helpers/validate.js";
 
 export default function comments(post_id) {
   const commentButton = document.querySelector("#comment_submit_button");
@@ -66,7 +67,45 @@ function clearForm() {
   document.querySelector("#content").value = "";
 }
 
+function validateForm() {
+  const name = document.querySelector("#author_name").value;
+  const email = document.querySelector("#author_email").value;
+  const content = document.querySelector("#content").value;
+  const name_error = document.querySelector("#name_error");
+  const email_error = document.querySelector("#email_error");
+  const message_error = document.querySelector("#message_error");
+
+  let invalid = false;
+
+  if (name.length === 0) {
+    name_error.classList.add("show");
+    invalid = true;
+  } else {
+    name_error.classList.remove("show");
+  }
+
+  if (!validateEmail(email)) {
+    email_error.classList.add("show");
+    invalid = true;
+  } else {
+    email_error.classList.remove("show");
+  }
+
+  if (content.length < 3) {
+    message_error.classList.add("show");
+    invalid = true;
+  } else {
+    message_error.classList.remove("show");
+  }
+
+  return !invalid;
+}
+
 function postComment(post_id) {
+  if (!validateForm()) {
+    return;
+  }
+
   const psw = "SVFm 61b0 tlPg 5xbW PYrh mkFh";
   const user = "krmadmin";
   const encoded = btoa(user + ":" + psw);

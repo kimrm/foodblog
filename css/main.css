@@ -13,7 +13,6 @@
 @import url("components/dropdownmenu.css");
 @import url("components/dialog.css");
 @import url("components/errors.css");
-@import url("components/carousel.css");
 
 :root {
   --body-background: #fafafa;
@@ -278,6 +277,23 @@ h2 {
   100% {
     transform: translateX(0);
   }
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel-posts {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel-posts-item {
+  flex: 0 0 33.33%;
+  max-width: 100%;
+  padding: 0 15px;
 }
 
 .hide {

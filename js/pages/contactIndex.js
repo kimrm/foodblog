@@ -1,4 +1,5 @@
 import showDialog from "../functions/showDialog.js";
+import { validateEmail } from "../helpers/validate.js";
 
 export default function contact() {
   const btn = document.querySelector("#contact_submit_button");
@@ -89,10 +90,4 @@ function clearForm() {
   emailElement.value = "";
   subjectElement.value = "";
   messageElement.value = "";
-}
-
-function validateEmail(email) {
-  const regEx = /\S+@\S+\.\S+/;
-  const patternMatches = regEx.test(email);
-  return patternMatches;
 }

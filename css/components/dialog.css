@@ -7,6 +7,14 @@ dialog {
   animation: in 0.2s ease-in-out forwards;
 }
 
+.error {
+  border: 2px solid red;
+}
+
+.success {
+  border: 2px solid green;
+}
+
 @keyframes in {
   0% {
     transform: translateY(-3000px);
@@ -36,7 +44,6 @@ dialog[open] {
   padding: 0.5rem 1.5rem;
   background-color: transparent;
   border-radius: 5px;
-  border: 1px solid #cb44c2;
   cursor: pointer;
 }
 
