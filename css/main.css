@@ -115,7 +115,7 @@ h2 {
 .carousel-posts-grid {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 1rem;
   width: 100%;
   position: relative;
   opacity: 1;
@@ -1226,6 +1226,7 @@ nav ul li .active {
   .carousel-posts-grid {
     flex-direction: row;
     justify-content: space-between;
+    gap: 4px;
   }
   .posts-column__image {
     max-height: 350px;

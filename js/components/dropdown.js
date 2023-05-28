@@ -20,6 +20,7 @@ export default function dropdown() {
   });
   dropdownHeaderDiv.append(dropdownHeader, menu_button);
   const ul = document.createElement("ul");
+  ul.role = "navigation";
   const links = [
     createLink("Home", "/"),
     createLink("All posts", "/blog"),
