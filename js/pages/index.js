@@ -153,7 +153,7 @@ function createGrid(data, position, count = 3) {
 
   const columns = displayPosts.map((post) => {
     const post_column_a = document.createElement("a");
-    // post_column_a.href = `/blog/blog-post.html?id=${post.id}`;
+
     post_column_a.classList.add("posts-column", "slidable");
 
     const img_container = document.createElement("div");
@@ -161,7 +161,6 @@ function createGrid(data, position, count = 3) {
 
     const title = document.createElement("h3");
     title.classList.add("posts-column__title");
-    // title.innerHTML = `${post.title.rendered}`;
 
     post_column_a.append(img_container, title);
 

@@ -75,43 +75,6 @@ function createSearchBoxForm() {
   return form;
 }
 
-function _createSearchBoxDiv() {
-  const form = new html("form");
-  form.setAttributes({ action: "/blog/search.html", method: "GET" });
-  const searchKeywords = new URLSearchParams(window.location.search).get(
-    "search"
-  );
-  const searchBoxDiv = new html("div");
-  searchBoxDiv.setClasses("header__search-box");
-  const searchInput = new html("input");
-  searchInput.setAttributes({
-    type: "text",
-    name: "search",
-    placeholder: "Keywords",
-    "aria-label": "Search",
-  });
-  if (searchKeywords) {
-    searchInput.setAttributes({ value: searchKeywords });
-  }
-  const searchButton = new html("button");
-  searchButton.setClasses("header__search-button");
-  searchButton.setEventListener("click", () => {
-    search(searchInput.element.value);
-  });
-  searchBoxDiv.appendChild(searchInput);
-  const searchButtonImg = new html("img");
-  searchButtonImg
-    .setSrc("/images/search-button.svg")
-    .setClasses("header__search-button-img");
-  const searchButtonText = new html("span");
-  searchButtonText.setText("Search");
-  searchButton.appendChild(searchButtonImg);
-  searchButton.appendChild(searchButtonText);
-  searchBoxDiv.appendChild(searchButton);
-  form.appendChild(searchBoxDiv);
-  return form;
-}
-
 function createLink(text, href) {
   const li = document.createElement("li");
   const a = document.createElement("a");

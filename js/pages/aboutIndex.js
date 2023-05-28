@@ -18,11 +18,8 @@ export default function aboutIndex() {
       });
       const h1 = document.createElement("h1");
       h1.innerHTML = data.title.rendered;
-      //   const p = document.createElement("p");
-      //   p.innerHTML = data.content.rendered;
       article.append(h1);
       article.append(img);
-      //article.append(p);
 
       renderBlogPostContent(data);
     })
