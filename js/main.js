@@ -15,6 +15,19 @@ function main() {
   const footerElement = document.querySelector("footer");
   const footerContent = footer();
   footerElement.append(footerContent);
+
+  window.addEventListener("scroll", scrolled);
+}
+
+function scrolled() {
+  const header = document.querySelector("header");
+  if (header && window.scrollY > 1) {
+    if (!header.classList.contains("scrolled")) {
+      header.classList.add("scrolled");
+    }
+  } else {
+    header.classList.remove("scrolled");
+  }
 }
 
 main();

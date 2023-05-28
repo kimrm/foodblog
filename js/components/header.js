@@ -3,7 +3,7 @@ import search from "../pages/search.js";
 export default function Header(activePage = "home") {
   const hamburger = createHamburgerButton();
   const container = document.createElement("div");
-  container.classList.add("container");
+  container.classList.add("header-container");
 
   const headerWrapper = document.createElement("div");
   headerWrapper.classList.add("header__wrapper");

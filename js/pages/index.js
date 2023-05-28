@@ -3,8 +3,6 @@ import visibleDetector from "../functions/observer.js";
 const carouselImages = [];
 
 export default function index() {
-  window.addEventListener("scroll", scrolled);
-
   const url =
     "https://wp-foodblog.kimrune.dev/wp-json/wp/v2/posts?_embed=wp:featuredmedia&per_page=100";
   fetch(url)
@@ -13,17 +11,6 @@ export default function index() {
       renderStickyPost(data);
       renderCarousel(data);
     });
-}
-
-function scrolled() {
-  const header = document.querySelector("header");
-  if (header && window.scrollY > 1) {
-    if (!header.classList.contains("scrolled")) {
-      header.classList.add("scrolled");
-    }
-  } else {
-    header.classList.remove("scrolled");
-  }
 }
 
 function renderStickyPost(data) {
