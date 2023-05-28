@@ -8,6 +8,7 @@ export default function aboutIndex() {
     .then((response) => response.json())
     .then((data) => {
       const article = document.querySelector(".about-page");
+      article.innerHTML = "";
       const img = document.createElement("img");
       img.src = data._embedded["wp:featuredmedia"][0].source_url;
       img.alt = data._embedded["wp:featuredmedia"][0].alt_text;
