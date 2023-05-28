@@ -29,6 +29,7 @@ export default function blogPost() {
 
 function renderBlogPost(data) {
   const article = document.querySelector(".blog-post");
+  article.innerHTML = "";
   const img = document.createElement("img");
   img.src =
     data._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url;

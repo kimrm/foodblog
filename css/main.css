@@ -246,6 +246,14 @@ h2 {
   transition: all 0.2s ease-in-out;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: rgba(0, 0, 0, 0.1);
+}
+
 .loaded {
   animation: element-loaded 0.5s ease-in-out forwards;
 }
