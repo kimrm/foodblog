@@ -13,7 +13,8 @@ function main() {
   body.append(dropdownElement);
 
   const footerElement = document.querySelector("footer");
-  footerElement.innerHTML = footer();
+  const footerContent = footer();
+  footerElement.append(footerContent);
 }
 
 main();

@@ -9,7 +9,7 @@ export default function blogPost() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      document.title = data.title.rendered;
+      document.title = data.title.rendered + " - Møllers Kitchen";
 
       renderBlogPost(data);
 

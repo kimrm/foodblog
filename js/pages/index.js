@@ -1,3 +1,5 @@
+import visibleDetector from "../functions/observer.js";
+
 const carouselImages = [];
 
 export default function index() {
@@ -25,6 +27,9 @@ function scrolled() {
 }
 
 function renderStickyPost(data) {
+  const content = document.querySelector(".diagonal-hero__body");
+  visibleDetector(content, "loaded");
+
   const post = data.filter((post) => post.sticky === true)[0];
   const title = document.querySelector(".diagonal-hero__title");
   title.innerHTML = post.title.rendered;
@@ -51,7 +56,7 @@ function renderStickyPost(data) {
 function renderCarousel(posts) {
   preloadImages(posts);
 
-  const posts_grid = document.querySelector(".posts-grid");
+  const posts_grid = document.querySelector(".carousel-posts-grid");
   const button_left = document.querySelector("#button_left");
   const button_right = document.querySelector("#button_right");
 
